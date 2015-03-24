@@ -15,3 +15,4 @@
 include device/sony/rhine/BoardConfig.mk
 
 TARGET_BOOTLOADER_BOARD_NAME := C6803
+BUILD_KERNEL := true 

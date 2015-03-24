@@ -13,7 +13,13 @@
 # limitations under the License.
 
 TARGET_KERNEL_CONFIG := aosp_rhine_togari_defconfig
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+TARGET_KERNEL_SOURCE := kernel/sony/msm
+
+# Inherit Omni GSM telephony parts
+$(call inherit-product, vendor/omni/config/gsm.mk)
+
+# Inherit Omni product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
@@ -28,10 +34,10 @@ PRODUCT_COPY_FILES += \
     device/sony/togari/rootdir/logo.rle:root/logo.rle \
     device/sony/togari/rootdir/system/etc/sensors_calib.conf:system/etc/sensors_calib.conf
 
-PRODUCT_NAME := aosp_c6803
+PRODUCT_NAME := omni_togari
 PRODUCT_DEVICE := togari
 PRODUCT_BRAND := Sony
-PRODUCT_MODEL := Xperia Z Ultra (AOSP)
+PRODUCT_MODEL := Xperia Z Ultra
 PRODUCT_LOCALES += xxhdpi xhdpi hdpi
 PRODUCT_MANUFACTURER := Sony
 
